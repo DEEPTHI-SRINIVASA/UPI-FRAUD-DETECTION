@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="mx-auto" style="max-width:520px;">
+    <h2 class="hero-title mb-3 text-center">🔍 Fraud Detection</h2>
+    <p class="subtext text-center">Enter transaction details to check if it looks safe or fraudulent.</p>
+
+    <form method="POST" class="card p-4 shadow-sm border-0">
+      <div class="mb-3">
+        <label class="form-label fw-bold">Transaction ID</label>
+        <input type="text" name="txn_id" class="form-control"
+               value="{{ last_inputs.txn_id if last_inputs else '' }}"
+               placeholder="e.g. TXN12345" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Transaction Amount</label>
+        <input type="number" step="0.01" name="amount" class="form-control"
+               value="{{ last_inputs.amount if last_inputs else '' }}"
+               placeholder="e.g. 2500.00" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Location State</label>
+        <select name="state" class="form-select" required>
+          {% for s in states %}
+            <option value="{{ s }}" {% if last_inputs and s==last_inputs.state %}selected{% endif %}>{{ s }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Transaction Type</label>
+        <select name="ttype" class="form-select" required>
+          {% for t in types %}
+            <option value="{{ t }}" {% if last_inputs and t==last_inputs.ttype %}selected{% endif %}>{{ t }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">Channel</label>
+        <select name="channel" class="form-select" required>
+          {% for c in channels %}
+            <option value="{{ c }}" {% if last_inputs and c==last_inputs.channel %}selected{% endif %}>{{ c }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 fw-bold">🚀 Check Fraud</button>
+    </form>
+
+    {% if result %}
+      {% if "Fraudulent" in result %}
+        <div class="alert alert-danger mt-4 text-center fw-bold">⚠️ {{ result }}</div>
+      {% else %}
+        <div class="alert alert-success mt-4 text-center fw-bold">✅ {{ result }}</div>
+      {% endif %}
+    {% endif %}
+
+    {% if proba %}
+      <div class="alert alert-info mt-3 text-center">
+        <strong>Prediction probabilities:</strong><br>
+        Clear: {{ proba.Clear }} &nbsp; | &nbsp; Fraudulent: {{ proba.Fraudulent }}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

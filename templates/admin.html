@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+  <div>
+    <h2 class="hero-title mb-3">Admin dashboard</h2>
+    <p class="subtext">Private overview of users, feedback, and activity.</p>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card p-3 shadow-sm">
+          <h6 class="mb-2">Summary</h6>
+          <p class="mb-1"><strong>Predictions checked:</strong> {{ count_predictions }}</p>
+          <a href="{{ url_for('logout') }}" class="btn btn-outline-dark btn-sm">Logout</a>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <div class="card p-3 shadow-sm">
+          <h6 class="mb-2">Registered users</h6>
+          {% if users and users|length > 0 %}
+            <ul class="list-group">
+              {% for name, email in users %}
+                <li class="list-group-item d-flex justify-content-between">
+                  <span>{{ name }}</span>
+                  <span class="text-muted">{{ email }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="subtext mb-0">No users registered yet.</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="col-12">
+        <div class="card p-3 shadow-sm">
+          <h6 class="mb-2">Feedback (Contact messages)</h6>
+          {% if feedbacks and feedbacks|length > 0 %}
+            <ul class="list-group">
+              {% for email, message in feedbacks %}
+                <li class="list-group-item">
+                  <strong>{{ email }}</strong><br>
+                  <span class="text-muted">{{ message }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <p class="subtext mb-0">No feedback yet.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="text-center mt-4">
+    {% if user_email %}
+      <p class="mb-2 subtext">Welcome, <strong>{{ user_email }}</strong>!</p>
+    {% endif %}
+    <h1 class="hero-title"><i>Detect UPI Fraud in Real Time</i></h1>
+    <p class="subtext">A student project using Machine Learning</p>
+    <div class="d-flex justify-content-center gap-3 mt-3">
+      <a href="{{ url_for('upload') }}" class="btn btn-primary btn-lg">Upload Data</a>
+      <a href="{{ url_for('predict') }}" class="btn btn-success btn-lg">Try Prediction</a>
+    </div>
+    
+  </div>
+{% endblock %}

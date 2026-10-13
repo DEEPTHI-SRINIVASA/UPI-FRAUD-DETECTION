@@ -1,0 +1,11 @@
+Transaction_Id,Transaction_amt,location_state,Trans_type,channel,Fraud_type,Detection_Flagged
+TXN00001,12493,Tamil Nadu,Merchant Payment,API,Fake QR Code,Flagged
+TXN00002,5756,Karnataka,Recharge,API,None,Flagged
+TXN00003,8224,Sikkim,Refund,web,Unauthorized Access,Flagged	
+TXN00004,10405,Goa,Refund,Web,Unauthorized,Flagged
+TXN00005,35246,Jharkhand,Bill payment,Mobile app,None,Flagged
+TXN00006,1200,Goa,Recharge,API,None,Flagged	
+TXN00011,40960,Arunachal Pradesh,Recharge,API,None,Clear
+TXN00012,13753,Gujarat,Refund,Web,None,Clear
+TXN00013,16271,Andhra Pradesh,Refund,Web,None,Clear
+TXN00014,11115,Bihar,Merchant Payment,Web,None,Clear

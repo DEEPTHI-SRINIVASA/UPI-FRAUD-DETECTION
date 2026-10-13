@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="mx-auto" style="max-width:600px;">
+    <h2 class="hero-title mb-3">Upload CSV data</h2>
+    <p class="subtext">Upload transactions for quick preview.</p>
+    <form method="POST" enctype="multipart/form-data" class="card p-3 shadow-sm">
+      <div class="mb-3">
+        <input type="file" name="datafile" class="form-control" accept=".csv" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Upload</button>
+    </form>
+
+    {% if preview %}
+      <div class="mt-4 card p-3 shadow-sm">
+        <h5 class="mb-2">Preview</h5>
+        {{ preview|safe }}
+      </div>
+    {% endif %}
+  </div>
+{% endblock %}

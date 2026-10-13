@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="mx-auto" style="max-width:420px;">
+    <h2 class="hero-title mb-3">Login</h2>
+    <form method="POST" class="card p-3 shadow-sm">
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+  </div>
+{% endblock %}

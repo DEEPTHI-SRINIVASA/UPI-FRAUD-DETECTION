@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="mx-auto" style="max-width:420px;">
+    <h2 class="hero-title mb-3">Admin login</h2>
+    <form method="POST" class="card p-3 shadow-sm">
+      <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Enter admin password" required>
+      </div>
+      <button type="submit" class="btn btn-dark w-100">Login as admin</button>
+    </form>
+  </div>
+{% endblock %}
